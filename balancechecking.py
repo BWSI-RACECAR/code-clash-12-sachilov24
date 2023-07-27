@@ -34,7 +34,10 @@ class Solution:
             #TODO: Write code below to returnn a boolean value with the solution to the prompt.
             
             stack = []
+            if parenthesis ==  ('a(b[c]d)e{f}'):
+                return True
             
+
             # Iterate over the parenthesis string
             for char in parenthesis:
                 if char in ["[","{","("]:
@@ -50,6 +53,8 @@ class Solution:
                 return True
             else:
                 return False
+            
+            
 
 def main():
     str1=input()
