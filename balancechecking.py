@@ -32,22 +32,24 @@ class Solution:
             #return type: boolean
             
             #TODO: Write code below to returnn a boolean value with the solution to the prompt.
-        stack = []
-        for parenthesis in parenthesis:
-            if parenthesis == "[" or parenthesis == "{" or parenthesis == "(":
-                stack.append(parenthesis)
-
-        for parenthesis in parenthesis[::-1]:
-            if parenthesis == "]" or parenthesis == "}" or parenthesis == ")":
-                if not stack:
-                    return False
-                top = stack.pop()
-                if top != parenthesis:
-                    return False
-
-        if not stack:
-            return True
-        return False
+            
+            stack = []
+            
+            # Iterate over the parenthesis string
+            for char in parenthesis:
+                if char in ["[","{","("]:
+                    stack.append(char)
+                else:
+                    if len(stack) == 0:
+                        return False
+                    top = stack.pop()
+                    if (top == "[" and char != "]") or (top == "{" and char != "}") or (top == "(" and char != ")"):
+                        return False
+            
+            if len(stack) == 0:
+                return True
+            else:
+                return False
 
 def main():
     str1=input()
